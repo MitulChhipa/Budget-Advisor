@@ -11,7 +11,7 @@ showexpence()
 addbtn.addEventListener('click',(e)=>{
     e.preventDefault();
    let expences=localStorage.getItem('expences')
-   if(text.value=="" &&  amount.value=="")
+   if(text.value=="" || amount.value=="")
    {
        alert('pleasse enter the valid values')
    }
@@ -54,7 +54,7 @@ function showexpence(){
    expencesobj.forEach((element,index)=>{
        if(element.amountval<0){
        html+=`<li class="minus">${element.textval}
-       <span>-₹${element.amountval}</span>
+       <span>₹${element.amountval}</span>
        <button class="delete-btn" id="${index}" onclick="deletenote(this.id)">x</button>
    </li>`
        }
@@ -114,7 +114,7 @@ function updateExpence(){
         }
     })
     money_plus.innerText=`+₹${inc}`
-    money_minus.innerText=`-₹${exp}`
+    money_minus.innerText=`₹${exp}`
     let total=inc+exp
     updateTotal(total)
 }
